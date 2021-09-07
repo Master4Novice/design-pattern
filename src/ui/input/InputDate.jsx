@@ -1,18 +1,22 @@
 import React from 'react';
 
+import Grid from '@material-ui/core/Grid';
+import { KeyboardDatePicker } from '@material-ui/pickers';
+
 const InputDate = (props) => {
     const { name, value, label, setValue } = props;
     return (
-        <div>
-            <label htmlFor={name}>{label}:&nbsp;</label>
-            <input 
-                type="date" 
-                id={name} 
-                name={name} 
-                value={value} 
-                onChange={(e) => setValue(e.target.value)} 
+        <Grid container>
+            <KeyboardDatePicker
+                margin="normal"
+                id={name}
+                label={label}
+                format="MM/DD/yyyy"
+                value={value}
+                onChange={(date) => setValue(date)}
+                KeyboardButtonProps={{'aria-label': 'change date'}}
             />
-        </div>
+        </Grid>
     );
 }
 

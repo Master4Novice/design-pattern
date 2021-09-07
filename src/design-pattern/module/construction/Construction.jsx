@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 import Wages from './modules/Wages';
 
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import FormControl from '@material-ui/core/FormControl';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Button from '@material-ui/core/Button';
+
 const wages = new Wages();
 
 class Construction extends Component{
@@ -37,17 +50,46 @@ class Construction extends Component{
     }
 
     render() {
-        
+        const { classes } = this.props;
         return (
-            <div>
-              <h3>List of Available Wages</h3>
-              <ul>
-                  {wages.getAvailableWages().map((wage, index) => <li key={index}><span>&#x20B9;&nbsp;</span>{wage}</li>)}
-              </ul>
-              <input type="number" onChange={(e) => this.onChangeWage(e.target.value)} value={this.state.wage} />
-              <input type="button" onClick={this.onAddWage} value="Add Wage" />
-              <input type="button" onClick={this.onRemoveWage} value="Remove Wage" />
-            </div>
+            <Box m={2}>
+                <Grid container spacing={3}>
+                    <Grid container spacing={1}>
+                        <Grid item xs={12}>
+                           <div className={classes.center}><Typography varient="h3">List of Available Wages</Typography></div>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={1}>
+                        <Grid item xs={6}>
+                            <List>
+                                {wages.getAvailableWages().map((wage, index) => <ListItem key={index}><ListItemIcon>&#x20B9;&nbsp;</ListItemIcon><ListItemText primary={wage} /></ListItem>)}
+                            </List>
+                        </Grid>
+                        <Grid item xs={6}>&nbsp;</Grid>
+                    </Grid>
+                    <Grid container spacing={1}>
+                        <Grid item xs={6}>
+                            <FormControl fullWidth className={classes.margin} variant="outlined" size="small">
+                                <InputLabel htmlFor="outlined-wage">Wage</InputLabel>
+                                <OutlinedInput
+                                    id="outlined-wage"
+                                    value={this.state.wage}
+                                    onChange={(e) => this.onChangeWage(e.target.value)}
+                                    startAdornment={<InputAdornment position="start">&#x20B9;</InputAdornment>}
+                                    labelWidth={60}
+                                    size="small"
+                                />
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Button onClick={this.onAddWage} color="primary" size="small">Add Wage</Button>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button onClick={this.onRemoveWage} color="secondary" size="small">Remove Wage</Button>
+                        </Grid>
+                    </Grid>
+              </Grid>
+            </Box>
         );
     }
 }
