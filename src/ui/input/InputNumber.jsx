@@ -1,18 +1,23 @@
 import React from 'react';
 
+import FormControl from '@material-ui/core/FormControl';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+
 const InputNumber = (props) => {
     const { name, value, label, setValue } = props;
     return(
-        <div>
-            <label htmlFor={name}>{label}:&nbsp;</label>
-            <input 
-                type="number" 
-                id={name} 
-                name={name} 
-                value={value} 
-                onChange={(e) => setValue(e.target.value)} 
+        <FormControl fullWidth variant="outlined" size="small">
+            <InputLabel htmlFor={name}>{label}</InputLabel>
+            <OutlinedInput
+                type="number"
+                id={name}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                labelWidth={60}
+                size="small"
             />
-        </div>
+        </FormControl>
     );
 }
 
