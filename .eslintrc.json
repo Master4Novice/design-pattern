@@ -20,6 +20,15 @@
     "rules": {
         "react/jsx-filename-extension": [1, {"extensions": [".js", ".jsx", ".tsx"]}],
         "space-before-function-paren":"error",
-        "prettier/prettier": ["error", {"printWidth": 80, "tabWidth": 2, "endOfLine": "auto", "semi": true,"singleQuote": true, "bracketSpacing": true}]
+        "react/jsx-props-no-spreading": "off",
+        "react/forbid-prop-types": "off",
+        "react/no-array-index-key": "off",
+        "react/destructuring-assignment": "off",
+        "import/prefer-default-export": "off",
+        "class-methods-use-this": "off",
+        "consistent-return":"off",
+        "default-case":"off",
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
+        "prettier/prettier": ["error", {"printWidth": 80, "tabWidth": 2, "endOfLine": "auto", "semi": true,"singleQuote": true, "bracketSpacing": true, "trailingComma" : "none"}]
     }
 }
