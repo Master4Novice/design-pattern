@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import DesignPatternApp from "./design-pattern/DesignPatternApp";
 import theme from "./theme.tsx";
 import { ThemeProvider } from "@material-ui/core/styles";
